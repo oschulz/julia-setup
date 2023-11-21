@@ -22,8 +22,15 @@ also need a working Jupyter installation.
 is easy to install, but a full Anaconda or custom Python installation with
 Jupyter will work too, of course.
 
-Now open a [Julia REPL](https://docs.julialang.org/en/v1/stdlib/REPL/)
-and run
+Now open a [Julia REPL](https://docs.julialang.org/en/v1/stdlib/REPL/) - you can
+
+* use Ctrl-Shift-P (Shift-Command-P on OS-X) and select "Julia: Start REPL" in Visual Studio Code, or
+
+* start the Julia application on OS-X or Windows, or
+
+* run `julia` in a shell/terminal if the Julia executable is on your `$PATH`.
+
+Then run
 
 ```
 julia> include(download("https://raw.githubusercontent.com/oschulz/julia-setup/main/julia_setup_ijulia_revise.jl"))
