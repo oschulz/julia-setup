@@ -24,7 +24,7 @@ Jupyter will work too, of course.
 
 Now open a [Julia REPL](https://docs.julialang.org/en/v1/stdlib/REPL/) - you can
 
-* use Ctrl-Shift-P (Shift-Command-P on OS-X) and select "Julia: Start REPL" in Visual Studio Code, or
+* use Ctrl+Shift+P (Shift+Command+P on OS-X) and select "Julia: Start REPL" in Visual Studio Code, or
 
 * start the Julia application on OS-X or Windows, or
 
@@ -32,8 +32,21 @@ Now open a [Julia REPL](https://docs.julialang.org/en/v1/stdlib/REPL/) - you can
 
 Then run
 
-```
+```julia
 julia> include(download("https://raw.githubusercontent.com/oschulz/julia-setup/main/julia_setup_ijulia_revise.jl"))
+```
+
+Now press "]" to enter the Julia [package management console](https://docs.julialang.org/en/v1/stdlib/Pkg/) and add the packages you need, like
+
+```julia
+(@v1.10) pkg> add Plots
+```
+
+Press backspace or Ctrl+C to get back to the main Julia REPL. Test if you can [make a plot](https://docs.juliaplots.org/stable/):
+
+```julia
+using Plots
+plot(rand(100))
 ```
 
 You should be all set now, have fun with Julia!
