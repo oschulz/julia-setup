@@ -13,33 +13,66 @@ and set things up so you can use Julia [Jupyter notebooks](https://jupyter.org/)
 and automatic code reloading
 (via [Revise](https://timholy.github.io/Revise.jl/stable/)).
 
-First, download and install
-[Julia v1.10](https://julialang.org/downloads/#upcoming_release):
 
-* On Linux, simply download and extract the binary tarball and add the `"bin"`
-subdirectory to your `$PATH`.
+## Software Installation
 
-* On OS-X, download the disk image, open it, and drop "Julia" into your
-  "Applicaitons" folder.
+### Installing Julia
 
-* On Windows, downdload and run the Julia installer.
+The easiest way to install Julia is using the Juliaup installation manager, just follow the
+[official Julia installation instructions](https://julialang.org/downloads/).
 
-Alternatively, you can use [Juliaup](https://github.com/JuliaLang/juliaup) to
-install Julia and manage Julia versions.
+(In addition to Juliaup, you can also
+[manually download](https://julialang.org/downloads/#official_binaries_for_manual_download)
+and unpack/install a binary tarball for Linux, a binary tarball or a disk
+image for OS-X, and either a standalone installer or a portable ZIP archive
+for Windows.)
 
 On Windows (only!), you may also need to install the
-[Visual C++ redistributable](https://learn.microsoft.com/en-us/cpp/windows/latest-supported-vc-redist?view=msvc-170), e.g. if you want to use [CUDA from Julia](https://cuda.juliagpu.org/stable/).
+[Visual C++ redistributable](https://learn.microsoft.com/en-us/cpp/windows/latest-supported-vc-redist), e.g. if you want to use
+[CUDA from Julia](https://cuda.juliagpu.org/stable/installation/overview/).
 
-You should also install [Visual Studio Code](https://code.visualstudio.com/download)
-and the excellent
-[VS-Code Julia extension](https://code.visualstudio.com/docs/languages/julia).
 
-If you want to run Jupyter notebooks outside of Visual Studio Code, you will
-also need a working Jupyter installation.
+### Julia in Visual Studio Code
+
+[Visual Studio Code](https://code.visualstudio.com/download) provides a great
+environment to work with Julia.
+
+Install the
+[VS-Code Julia extension](https://code.visualstudio.com/docs/languages/julia),
+in most cases it should locate your Julia installation automatically. If
+not, configure the VS-Code setting `"julia.executablePath"` manually.
+
+Also try setting `"julia.execution.codeInREPL": true` in your VS-code setting,
+it makes code section you evaluate in scripts via Ctrl-enter available in the
+Julia REPL history afterwards.
+
+
+### Julia Jupyter notebooks
+
+#### Jupyter notebooks in Visual Studio Code
+
+You should be able to run Julia Jupyter notebooks directly within Visual
+Studio Code without any additional configuration. By default, VS-Code Julia
+notebooks use the same Julia version/installation that is used by the VS-Code
+Julia extension, so no Jupyter kernel configuration is required.
+
+
+#### Jupyter notebooks outside of Visual Studio Code
+
+If you want to run Julia Jupyter notebooks outside of Visual Studio Code, you
+will also need a working Jupyter installation.
 [JupyterLab Desktop](https://github.com/jupyterlab/jupyterlab-desktop)
-is easy [to install](https://github.com/jupyterlab/jupyterlab-desktop/releases),
-but an [Anaconda](https://www.anaconda.com/) or custom Python installation with
-Jupyter will work too, of course.
+is easy
+[to install](https://github.com/jupyterlab/jupyterlab-desktop/releases),
+but an [Anaconda](https://www.anaconda.com/) or system/custom Python
+installation that includes Jupyter will work too, of course.
+
+For non-VS-Code Jupyter notebooks you also also need to install the
+[IJulia Jupyter Julia kernel](https://github.com/JuliaLang/IJulia.jl) (see
+next section).
+
+
+## Setting up Julia
 
 Now open a [Julia REPL](https://docs.julialang.org/en/v1/stdlib/REPL/). To
 open a REPL, you can
@@ -57,7 +90,23 @@ Then run
 julia> include(download("https://raw.githubusercontent.com/oschulz/julia-setup/main/julia_setup_ijulia_revise.jl"))
 ```
 
-to install and configure IJulia and Revise.
+to install and configure IJulia and Revise. Note that IJulia and Revise should
+always be installed in your *default* Julia environment (*not* in individual
+project environments) to avoid version conflicts: the Jupyter kernel
+configuration is tied to a specific IJulia install path.
+"julia_setup_ijulia_revise.jl" takes care of this automatically.
+
+To manually install IJulia instead, run
+
+```julia
+julia> import Pkg; Pkg.activate(); Pkg.add("IJulia"); Pkg.build("IJulia")
+```
+
+(IJulia is not required to run Julia Jupyter notebooks in Visual Studio Code,
+but installing it anyway doesn't hurt.)
+
+
+## First steps in Julia
 
 Now press "]" to enter the Julia
 [package management console](https://docs.julialang.org/en/v1/stdlib/Pkg/)
