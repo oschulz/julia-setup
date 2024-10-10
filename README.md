@@ -87,14 +87,14 @@ open a REPL, you can
 Then run
 
 ```julia
-julia> include(download("https://raw.githubusercontent.com/oschulz/julia-setup/main/julia_setup_ijulia_revise.jl"))
+julia> include(download("https://raw.githubusercontent.com/oschulz/julia-setup/main/julia_setup.jl"))
 ```
 
 to install and configure IJulia and Revise. Note that IJulia and Revise should
 always be installed in your *default* Julia environment (*not* in individual
 project environments) to avoid version conflicts: the Jupyter kernel
 configuration is tied to a specific IJulia install path.
-"julia_setup_ijulia_revise.jl" takes care of this automatically.
+"julia_setup.jl" takes care of this automatically.
 
 To manually install IJulia instead, run
 
