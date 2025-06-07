@@ -6,14 +6,8 @@ Pkg.activate(joinpath(first(DEPOT_PATH), "environments", "v$(VERSION.major).$(VE
 # Will also create he environment if it doesn't exist:
 Pkg.instantiate()
 
-if !("IJulia" in keys(Pkg.project().dependencies))
-    @info "Installing IJulia into default Julia environment \"$(Pkg.project().path)\""
-    Pkg.add("IJulia"); Pkg.build("IJulia")
-end
-
-
 if !("Revise" in keys(Pkg.project().dependencies))
-    @info "Installing IJulia into default Julia environment \"$(Pkg.project().path)\""
+    @info "Installing Revise into default Julia environment \"$(Pkg.project().path)\""
     Pkg.add("Revise")
 end
 

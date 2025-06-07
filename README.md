@@ -8,10 +8,8 @@ your own risk.*
 
 This is a short tutorial on how to install the
 [Julia programming language](https://julialang.org/)
-and set things up so you can use Julia [Jupyter notebooks](https://jupyter.org/)
-(via the [IJulia Jupyter kernel](https://julialang.github.io/IJulia.jl/stable/))
-and automatic code reloading
-(via [Revise](https://timholy.github.io/Revise.jl/stable/)).
+and set things up so you can use automatic code reloading (via
+[Revise](https://timholy.github.io/Revise.jl/stable/)).
 
 
 ## Software Installation
@@ -90,20 +88,15 @@ Then run
 julia> include(download("https://raw.githubusercontent.com/oschulz/julia-setup/main/julia_setup.jl"))
 ```
 
-to install and configure IJulia and Revise. Note that IJulia and Revise should
-always be installed in your *default* Julia environment (*not* in individual
-project environments) to avoid version conflicts: the Jupyter kernel
-configuration is tied to a specific IJulia install path.
-"julia_setup.jl" takes care of this automatically.
+to install and configure Revise. 
 
-To manually install IJulia instead, run
+For non-VS-Code Jupyter notebooks, install IJulia via
 
 ```julia
 julia> import Pkg; Pkg.activate(); Pkg.add("IJulia"); Pkg.build("IJulia")
 ```
 
-(IJulia is not required to run Julia Jupyter notebooks in Visual Studio Code,
-but installing it anyway doesn't hurt.)
+(IJulia is not required to run Julia Jupyter notebooks in Visual Studio Code.)
 
 
 ## First steps in Julia
